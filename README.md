@@ -1,2 +1,2 @@
 # RPG
-C#, VSCode, dotNetCore3.1, EFCore
+C#, dotNetCore3.1, Web API Core, EFCore, VSCode
