@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RPG.Services.CharacterService;
 
 namespace RPG
 {
@@ -32,6 +33,8 @@ namespace RPG
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RPG", Version = "v1" });
             });
+            services.AddScoped<ICharacterService, CharacterService>();
+            // WebAPI needs to use the CharacterService class whenever the controller needs to inject ICharacterService
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
