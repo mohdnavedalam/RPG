@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RPG.Services.CharacterService;
+using AutoMapper;
 
 namespace RPG
 {
@@ -33,6 +34,7 @@ namespace RPG
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RPG", Version = "v1" });
             });
+            services.AddAutoMapper(typeof(Startup));
             services.AddScoped<ICharacterService, CharacterService>();
             // WebAPI needs to use the CharacterService class whenever the controller needs to inject ICharacterService
         }
