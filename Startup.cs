@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RPG.Services.CharacterService;
 using AutoMapper;
+using RPG.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RPG
 {
@@ -37,6 +39,7 @@ namespace RPG
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<ICharacterService, CharacterService>();
             // WebAPI needs to use the CharacterService class whenever the controller needs to inject ICharacterService
+            services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
